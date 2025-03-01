@@ -61,26 +61,54 @@ function App() {
 
 			{/* Form Submission */}
 			<form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
-					{/* Input Name */}
-					<label htmlFor="input-name" className="block font-medium mb-1">Name</label>
-					<input type="text" name="name" id="input-name" required value={name} onChange={(e) => setName(e.target.value)}
-						className="w-full p-2 border rounded-md mb-4"
-						placeholder="Buzz Lightyear"/>
-					{/* Input Quote */}
-					<label htmlFor="input-message" className="block font-medium mb-1">Quote</label>
-					<input type="text" name="message" id="input-message" required value={message} onChange={(e) => setMessage(e.target.value)}
-						className="w-full p-2 border rounded-md mb-4"
-						placeholder="To Infinity and Beyond!"/>
-					{/* Submit Button */}
-					<button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors">Submit</button>
+				{/* Input Name */}
+				<label htmlFor="input-name" className="block font-medium mb-1">Name</label>
+				<input type="text" name="name" id="input-name" required value={name} onChange={(e) => setName(e.target.value)}
+					className="w-full p-2 border rounded-md mb-4"
+					placeholder="Buzz Lightyear"/>
+				{/* Input Quote */}
+				<label htmlFor="input-message" className="block font-medium mb-1">Quote</label>
+				<input type="text" name="message" id="input-message" required value={message} onChange={(e) => setMessage(e.target.value)}
+					className="w-full p-2 border rounded-md mb-4"
+					placeholder="To Infinity and Beyond!"/>
+				{/* Submit Button */}
+				<button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors">Submit</button>
 			</form>
 
-			<h2>Previous Quotes</h2>
-			{/* TODO: Display the actual quotes from the database */}
-			<div className="messages">
-				<p>Peter Anteater</p>
-				<p>Zot Zot Zot!</p>
-				<p>Every day</p>
+			{/* Quote Filter */}
+			<h2 className="text-2xl font-semibold mt-8 mb-4">Filter Quotes</h2>
+			<div className="bg-white p-2 rounded-lg shadow-md flex justify-center space-x-4">
+			{['all', 'year', 'month', 'week'].map((value) => (
+				<button
+				key={value}
+				onClick={() => setMaxAge(value)}
+				className={`px-4 py-2 rounded-md focus:outline-none ${
+					maxAge === value
+					? 'bg-blue-500 text-white'
+					: 'text-gray-700 hover:bg-blue-100'
+				}`}
+				disabled={maxAge === value} 
+				>
+				{value === 'all' ? 'All' : `Last ${value.charAt(0).toUpperCase() + value.slice(1)}`}
+				</button>
+			))}
+			</div>
+
+			{/* Previous Quotes */}
+			<h2 className="text-2xl font-semibold mt-8 mb-4">Previous Quotes</h2>
+			<div className="relative"></div>
+			{/* Quotes */}
+			<div className="messages-wrapper relative max-w-lg mx-auto">
+				<div className="messages">
+					{quotes.map((quote, index) => (
+						<Quote
+							key={index}
+							name={quote.name}
+							message={quote.message}
+							time={quote.time}
+						/>
+					))}
+				</div>
 			</div>
 		</div>
 	);
