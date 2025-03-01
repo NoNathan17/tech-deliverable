@@ -48,12 +48,18 @@ function App() {
 			})
 	};
 	return (
-		<div className="App">
-			{/* TODO: include an icon for the quote book */}
+		/* App */
+		<div className="min-h-screen bg-gradient-to-br from-green-100 to-green-50 p-8 scroll-smooth">
+
+			{/* Logo */}
+			<div className="logo flex justify-center mb-5">
+				<img src="/img/quotebook.png" alt="Logo" className="w-24 h-24"/>
+			</div>
+
+			{/* Header */}
 			<h1>Hack at UCI Tech Deliverable</h1>
 
-			<h2>Submit a quote</h2>
-			{/* TODO: implement custom form submission logic to not refresh the page */}
+			{/* Form Submission */}
 			<form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
 					{/* Input Name */}
 					<label htmlFor="input-name" className="block font-medium mb-1">Name</label>
