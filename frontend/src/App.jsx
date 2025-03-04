@@ -7,16 +7,17 @@ import "./index.css";
 
 function Quote({ name, message, time }) { // Component for quotes
     return (
-        <div className="quote bg-white dark:bg-gray-200 p-4 rounded-lg shadow-xl mt-4 mb-4 hover:scale-105 transition-transform duration-200"
-		data-aos="zoom-in">
-            <p className="font-bold text-gray-800">{name}</p>
-            <p className="text-gray-700">{message}</p>
-            <p className="text-sm text-gray-500"> 
-			<em>{new Date(time).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })} 
-    			{", "} 
-    			{new Date(time).toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })}
-			</em></p>
-        </div>
+		<div data-aos="zoom-in">
+			<div className="quote bg-white dark:bg-gray-200 p-4 rounded-lg shadow-xl mt-4 mb-4 hover:scale-105 transition-transform duration-200">
+				<p className="font-bold text-gray-800">{name}</p>
+				<p className="text-gray-700">{message}</p>
+				<p className="text-sm text-gray-500"> 
+				<em>{new Date(time).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })} 
+					{", "} 
+					{new Date(time).toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })}
+				</em></p>
+			</div>
+		</div>
     );
 }
 
@@ -144,7 +145,7 @@ function App() {
 						className="w-full p-2 border rounded-md mb-4 dark:bg-gray-100"
 						placeholder="I have a dream!"/>
 					{/* Submit Button */}
-					<button type="submit" className="w-1/3 p-2 rounded-lg bg-green-400 dark:bg-green-600 text-white hover:bg-green-500 dark:hover:bg-green-500 transition-colors mt-2 mx-auto">Submit</button>
+					<button type="submit" className="w-1/3 p-2 rounded-lg bg-green-400 dark:bg-green-600 text-white hover:bg-green-500 dark:hover:bg-green-700 transition-colors mt-2 mx-auto">Submit</button>
 				</div>
 			</form>
 
@@ -158,7 +159,7 @@ function App() {
 					className={`px-4 py-2 rounded-md focus:outline-none ${
 						maxAge === value
 						? 'bg-green-400 dark:bg-green-600 text-white'
-						: 'text-gray-700 hover:bg-green-100 dark:hover:bg-green-300'
+						: 'text-gray-700 hover:bg-green-100 dark:hover:bg-green-400'
 					}`}
 					disabled={maxAge === value} 
 					>
